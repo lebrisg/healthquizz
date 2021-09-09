@@ -26,9 +26,9 @@ app.engine('html', ejs.renderFile);
 // Display requests at the console
 app.use(morgan("combined"));
 
-app.get("/", function(request, response) {
-  response.render("index.html");
- });
+//app.get("/", function(request, response) {
+//  response.render("index.html");
+// });
 
 // Expose our metrics at the default URL for Prometheus
 //app.get('/metrics', async (req, res) => {
