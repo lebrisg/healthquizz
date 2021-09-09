@@ -12,10 +12,10 @@ var app = express();
 app.disable("x-powered-by");
 
 // Enable prom-client to expose default application metrics
-const collectDefaultMetrics = promClient.collectDefaultMetrics;
+//const collectDefaultMetrics = promClient.collectDefaultMetrics;
 
 // Define a custom prefix string for application metrics
-collectDefaultMetrics({ prefix: 'maps:' });
+//collectDefaultMetrics({ prefix: 'maps:' });
 
 // Define render engine used
 app.engine('html', ejs.renderFile);
@@ -26,65 +26,15 @@ app.engine('html', ejs.renderFile);
 // Display requests at the console
 app.use(morgan("combined"));
 
-// Display initial configuration
-//config.display();
-
-// Test MongoDB config
-//if(!config.mongoURL) {
-//  console.log("Bad config parameter!");
-//  return;
-// }
-
-//const client = new MongoClient(config.mongoURL);
-
-//async function run() {
-//  try {
-    // Connect the client to the server
-//    await client.connect();
-    // Establish and verify connection
-//    await client.db(config.mongoDatabase).command({ ping: 1 });
-//    console.log("Connected successfully to server at:", config.mongoURL);
-//   } finally {
-    // Ensures that the client will close when you finish/error
-//    await client.close();
-//   }
-//}
-//run().catch(console.dir);
-
-//var db = null,
-//    dbDetails = new Object();
-
-//var initDb = function(callback) {
-//  if (config.mongoURL == null) return;
-//  if (mongodb == null) return;
-
-//  mongodb.connect(config.mongoURL, function(err, conn) {
-//    if (err) {
-//      callback(err);
-//      return;
-//    }
-
-//    db = conn;
-//    dbDetails.databaseName = db.databaseName;
-//    dbDetails.url = config.mongoURLLabel;
-//    dbDetails.type = 'MongoDB';
-
-//    console.log('Connected to MongoDB at: %s', config.mongoURL);
-//  });
-// };
-
 app.get("/", function(request, response) {
-//  if (!db) {
-//    initDb(function(err){});
-//  }
   response.render("index.html");
  });
 
 // Expose our metrics at the default URL for Prometheus
-app.get('/metrics', async (req, res) => {
-  res.set('Content-Type', promClient.register.contentType);
-  res.send(await promClient.register.metrics());
- });
+//app.get('/metrics', async (req, res) => {
+//  res.set('Content-Type', promClient.register.contentType);
+//  res.send(await promClient.register.metrics());
+// });
 
 app.use(function(err, req, res, next){
   console.error(err.stack);
