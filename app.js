@@ -18,7 +18,7 @@ app.disable("x-powered-by");
 //collectDefaultMetrics({ prefix: 'maps:' });
 
 // Define render engine used
-//app.engine('html', ejs.renderFile);
+app.engine('html', ejs.renderFile);
 
 // Define public directory
 //app.use(express.static(__dirname + '/public'));
@@ -27,8 +27,8 @@ app.disable("x-powered-by");
 app.use(morgan("combined"));
 
 app.get("/", function(request, response) {
-  response.send('Welcome to user page');
-//  response.render("index.html");
+//  response.send('Welcome to user page');
+  response.render("index.html");
  });
 
 // Expose our metrics at the default URL for Prometheus
