@@ -42,5 +42,5 @@ app.use(function(err, req, res, next){
  });
 
 // Start http server
-app.listen(config.port, config.ip);
-console.log('Server running on http://%s:%s', config.ip, config.port);
+app.listen(8080, 0.0.0.0);
+console.log('Server running on http');
