@@ -26,9 +26,10 @@ app.engine('html', ejs.renderFile);
 // Display requests at the console
 app.use(morgan("combined"));
 
-//app.get("/", function(request, response) {
+app.get("/", function(request, response) {
+  response.send('Welcome to user page');
 //  response.render("index.html");
-// });
+ });
 
 // Expose our metrics at the default URL for Prometheus
 //app.get('/metrics', async (req, res) => {
@@ -42,5 +43,5 @@ app.use(function(err, req, res, next){
  });
 
 // Start http server
-app.listen(8080, 0.0.0.0);
+app.listen(8080);
 console.log('Server running on http');
