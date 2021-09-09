@@ -2,8 +2,8 @@ var http = require("http");
 var morgan = require("morgan");
 var express = require("express");
 var ejs = require("ejs");
-const { MongoClient } = require("mongodb");
-var promClient = require("prom-client");
+//const { MongoClient } = require("mongodb");
+//var promClient = require("prom-client");
 //var config = require("./config");
 
 // Assign app variable
@@ -18,7 +18,7 @@ app.disable("x-powered-by");
 //collectDefaultMetrics({ prefix: 'maps:' });
 
 // Define render engine used
-app.engine('html', ejs.renderFile);
+//app.engine('html', ejs.renderFile);
 
 // Define public directory
 //app.use(express.static(__dirname + '/public'));
