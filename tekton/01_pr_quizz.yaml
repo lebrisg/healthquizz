@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: pr-quizz
+spec:
+  serviceAccountName: pipeline
+  params:
+    - name: APP_NAME
+      value: healthquizz
+    - name: GIT_REPO
+      value: 'https://github.com/lebrisg/healthquizz'
+    - name: GIT_REVISION
+      value: main
+    - name: IMAGE_NAME
+      value: 'image-registry.openshift-image-registry.svc:5000/healthquizz/healthquizz'
+    - name: PATH_CONTEXT
+      value: .
+    - name: VERSION
+      value: 14-ubi7
+  pipelineRef:
+    name: pp-quizz
+  workspaces:
+  - name: workspace
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 500Mi
