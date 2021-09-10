@@ -20,6 +20,7 @@ spec:
     type: string
   - name: VERSION
     type: string
+    description: Type of image used
   workspaces:
   - name: workspace
   tasks:
