@@ -2,9 +2,9 @@ var http = require("http");
 var morgan = require("morgan");
 var express = require("express");
 var ejs = require("ejs");
-//const { MongoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
 var promClient = require("prom-client");
-//var config = require("./config");
+var config = require("./config");
 
 // Assign app variable
 var app = express();
@@ -26,6 +26,33 @@ app.engine('html', ejs.renderFile);
 // Display requests at the console
 app.use(morgan("combined"));
 
+// Display initial configuration
+config.display();
+
+// Test MongoDB config
+if(!config.mongoURL) {
+  console.log("Bad config parameter!");
+  return;
+ }
+
+const client = new MongoClient(config.mongoURL);
+
+async function run() {
+  try {
+    // Connect the client to the server
+    await client.connect();
+    // Establish and verify connection
+    await client.db(config.mongoDatabase).command({ ping: 1 });
+    console.log("Connected successfully to server at:", config.mongoURL);
+   } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+   }
+}
+
+run().catch(console.dir);
+
+// Deal with HTTP requests
 app.get("/", function(request, response) {
 //  response.send('Welcome to user page');
   response.render("index.html");
