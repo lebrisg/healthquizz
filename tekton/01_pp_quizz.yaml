@@ -5,17 +5,21 @@ metadata:
 spec:
   params:
   - name: APP_NAME
-    type: string 
+    type: string
+    description: Name of the application to be built
   - name: GIT_REPO
-    type: string 
+    type: string
+    description: Url of the git repository
   - name: GIT_REVISION
-    type: string 
+    type: string
+    description: Revision to be used from repo of the code for deployment
   - name: IMAGE_NAME
-    type: string 
+    type: string
+    description: Location of the repo where image has to be pushed
   - name: PATH_CONTEXT
-    type: string 
+    type: string
   - name: VERSION
-    type: string 
+    type: string
   workspaces:
   - name: workspace
   tasks:
