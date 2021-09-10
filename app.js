@@ -15,7 +15,7 @@ app.disable("x-powered-by");
 const collectDefaultMetrics = promClient.collectDefaultMetrics;
 
 // Define a custom prefix string for application metrics
-//collectDefaultMetrics({ prefix: 'maps:' });
+collectDefaultMetrics({ prefix: 'healthquizz:' });
 
 // Define render engine used
 app.engine('html', ejs.renderFile);
