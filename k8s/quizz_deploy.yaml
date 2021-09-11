@@ -39,15 +39,23 @@ spec:
             secretKeyRef:
               key: database-name
               name: mongodb
+        name: healthquizz
         image: image-registry.openshift-image-registry.svc:5000/healthquizz/healthquizz@sha256:20466e72a1904b3862034eecfd3ddc208cfd7d27be2a9243007cbe1238295090
         imagePullPolicy: Always
-        name: healthquizz
+        volumeMounts:
+        - name: healthdata
+          mountPath: /mnt
+          readonly: true
         ports:
         - containerPort: 8080
           protocol: TCP
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+      volumes:
+      - name: healthdata
+        configMap:
+          name: healthdata
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

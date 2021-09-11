@@ -7,6 +7,7 @@ var mongodb = require("mongodb");
 var mongoose = require("mongoose");
 var promClient = require("prom-client");
 var config = require("./config");
+const fs = require('fs');
 
 // Assign app variable
 var app = express();
@@ -40,6 +41,7 @@ if(!config.mongoURL) {
 async function run() {
   await mongoose.connect(config.mongoURL);
   console.log("Connected successfully to server at:", config.mongoURL);
+  //fs.readFile('');
  }
 
 run().catch(err => console.log(err));
