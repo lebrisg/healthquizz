@@ -39,6 +39,7 @@ if(!config.mongoURL) {
 
 async function run() {
   await mongoose.connect(config.mongoURL);
+  console.log("Connected successfully to server at:", config.mongoURL);
  }
 
 run().catch(err => console.log(err));
