@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 const fs = require('fs');
 var config = require("./config");
 
-async function run() {
+async function init() {
   await mongoose.connect(config.mongoURL);
   console.log("Connected successfully to server at:", config.mongoURL);
   try {
@@ -14,4 +14,4 @@ async function run() {
    }
  }
 
-exports.run = run
+exports.init = init

@@ -39,37 +39,8 @@ if(!config.mongoURL) {
   return;
  }
 
-//async function run() {
-//  await mongoose.connect(config.mongoURL);
-//  console.log("Connected successfully to server at:", config.mongoURL);
-//  try {
-//    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
-//    console.log(data);
-//   } catch (err) {
-//    console.error(err);
-//   }
-// }
-
-//run().catch(err => console.log(err));
-
-db.run().catch(err => console.log(err));
-
-//const client = new MongoClient(config.mongoURL);
-
-//async function run() {
-//  try {
-    // Connect the client to the server
-//    await client.connect();
-    // Establish and verify connection
-//    await client.db(config.mongoDatabase).command({ ping: 1 });
-//    console.log("Connected successfully to server at:", config.mongoURL);
-//   } finally {
-    // Ensures that the client will close when you finish/error
-//    await client.close();
-//   }
-//}
-
-//run().catch(console.dir);
+// Initialize the database
+db.init().catch(err => console.log(err));
 
 // Deal with HTTP requests
 app.get("/", function(request, response) {
