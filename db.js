@@ -8,8 +8,8 @@ async function init() {
   console.log("Connected successfully to server at:", config.mongoURL);
   try {
     const db = mongoose.connection;
-    var nbDocs = db.healthdata.count();
-    console.log('nbDocs:', nbDocs); 
+    var nbDocs = await db.collection('healthdata').count();
+    console.log('nbDocs:', nbDocs);
     //db.close();
 
     //const data = fs.readFileSync('/mnt/healthdata', 'utf8');
