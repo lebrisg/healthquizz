@@ -42,7 +42,7 @@ async function run() {
   await mongoose.connect(config.mongoURL);
   console.log("Connected successfully to server at:", config.mongoURL);
   try {
-    fs.readFileiSync('/mnt/healthdata', 'utf8');
+    fs.readFileSync('/mnt/healthdata', 'utf8');
     console.log(data);
    } catch (err) {
     console.error(err);
