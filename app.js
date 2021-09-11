@@ -3,11 +3,12 @@ var morgan = require("morgan");
 var express = require("express");
 var ejs = require("ejs");
 //const { MongoClient } = require("mongodb");
-var mongodb = require("mongodb");
-var mongoose = require("mongoose");
+//var mongodb = require("mongodb");
+//var mongoose = require("mongoose");
 var promClient = require("prom-client");
 var config = require("./config");
-const fs = require('fs');
+//const fs = require('fs');
+var db = require("./db");
 
 // Assign app variable
 var app = express();
@@ -38,18 +39,20 @@ if(!config.mongoURL) {
   return;
  }
 
-async function run() {
-  await mongoose.connect(config.mongoURL);
-  console.log("Connected successfully to server at:", config.mongoURL);
-  try {
-    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
-    console.log(data);
-   } catch (err) {
-    console.error(err);
-   }
- }
+//async function run() {
+//  await mongoose.connect(config.mongoURL);
+//  console.log("Connected successfully to server at:", config.mongoURL);
+//  try {
+//    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
+//    console.log(data);
+//   } catch (err) {
+//    console.error(err);
+//   }
+// }
 
-run().catch(err => console.log(err));
+//run().catch(err => console.log(err));
+
+db.run().catch(err => console.log(err));
 
 //const client = new MongoClient(config.mongoURL);
 
