@@ -7,16 +7,14 @@ async function init() {
   await mongoose.connect(config.mongoURL);
   console.log("Connected successfully to server at:", config.mongoURL);
   try {
-    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
-    console.log(data);
-    const docs = JSON.parse(data.toString());
-
     const db = mongoose.connection;
-
     var nbDocs = db.collection('healthdata').find().count();
     console.log('nbDocs:', nbDocs); 
-    db.close();
+    //db.close();
 
+    //const data = fs.readFileSync('/mnt/healthdata', 'utf8');
+    //console.log(data);
+    //const docs = JSON.parse(data.toString());
 //    db.collection('healthdata')
 //      .insertMany(docs, function(err, result) {
 //        if (err) throw err;
