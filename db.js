@@ -8,7 +8,7 @@ async function init() {
   console.log("Connected successfully to server at:", config.mongoURL);
   try {
     const db = mongoose.connection;
-    var nbDocs = db.collection('healthdata').find().count();
+    var nbDocs = db.healthdata.count();
     console.log('nbDocs:', nbDocs); 
     //db.close();
 
