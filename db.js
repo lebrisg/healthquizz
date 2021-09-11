@@ -10,17 +10,24 @@ async function init() {
     const db = mongoose.connection;
     var nbDocs = await db.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
-    //db.close();
 
-    //const data = fs.readFileSync('/mnt/healthdata', 'utf8');
-    //console.log(data);
-    //const docs = JSON.parse(data.toString());
-//    db.collection('healthdata')
-//      .insertMany(docs, function(err, result) {
-//        if (err) throw err;
-//        console.log('Inserted docs:', result.insertedCount);
-//        db.close();
-//    });
+    // If no document in the database
+    if (nbDocs == 0) {
+      // Read the file healthdata
+      const data = fs.readFileSync('/mnt/healthdata', 'utf8');
+      console.log(data);
+
+      // Transform it into Json
+      const docs = JSON.parse(data.toString());
+
+      // Insert it into the database
+      db.collection('healthdata')
+        .insertMany(docs, function(err, result) {
+          if (err) throw err;
+          console.log('Inserted docs:', result.insertedCount);
+       });
+     }
+    db.close();
    } catch (err) {
     console.error(err);
    }
