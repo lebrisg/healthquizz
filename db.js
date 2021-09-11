@@ -13,12 +13,16 @@ async function init() {
 
     const db = mongoose.connection;
 
-    db.collection('healthdata')
-      .insertMany(docs, function(err, result) {
-        if (err) throw err;
-        console.log('Inserted docs:', result.insertedCount);
-        db.close();
-    });
+    var nbDocs = db.collection('healthdata').find().count();
+    console.log('nbDocs:', nbDocs); 
+    db.close();
+
+//    db.collection('healthdata')
+//      .insertMany(docs, function(err, result) {
+//        if (err) throw err;
+//        console.log('Inserted docs:', result.insertedCount);
+//        db.close();
+//    });
    } catch (err) {
     console.error(err);
    }
