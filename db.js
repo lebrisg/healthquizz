@@ -9,6 +9,16 @@ async function init() {
   try {
     const data = fs.readFileSync('/mnt/healthdata', 'utf8');
     console.log(data);
+    const docs = JSON.parse(data.toString());
+
+    const db = mongoose.db(config.mongoDatabase);
+
+    db.collection('healthdata')
+      .insertMany(docs, function(err, result) {
+        if (err) throw err;
+        console.log('Inserted docs:', result.insertedCount);
+        db.close();
+    });
    } catch (err) {
     console.error(err);
    }
