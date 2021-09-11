@@ -11,7 +11,7 @@ async function init() {
     console.log(data);
     const docs = JSON.parse(data.toString());
 
-    const db = mongoose.db(config.mongoDatabase);
+    const db = mongoose.connection;
 
     db.collection('healthdata')
       .insertMany(docs, function(err, result) {

@@ -4,8 +4,10 @@ metadata:
   name: healthdata
 data:
   healthdata: |
-    { "type": "légumes", "nom": "ail", "protéine": "non", "couleur": "verte" }
-    { "type": "laitages", "nom": "fromage blanc nature", "protéine": "oui", "couleur": "verte" }
-    { "type": "fruits frais", "nom": "abricot", "protéine": "non", "couleur": "rouge" }
-    { "type": "fruits secs", "nom": "pignon", "protéine": "non", "couleur": "orange" }
+    [
+    { "type": "légumes", "nom": "ail", "protéine": "non", "couleur": "verte" },
+    { "type": "laitages", "nom": "fromage blanc nature", "protéine": "oui", "couleur": "verte" },
+    { "type": "fruits frais", "nom": "abricot", "protéine": "non", "couleur": "rouge" },
+    { "type": "fruits secs", "nom": "pignon", "protéine": "non", "couleur": "orange" },
     { "type": "matières grasses", "nom": "beurre de cacahuète", "protéine": "non", "couleur": "violette" }
+    ]
