@@ -1,6 +1,7 @@
 var mongodb = require("mongodb");
 var mongoose = require("mongoose");
 const fs = require('fs');
+var config = require("./config");
 
 async function run() {
   await mongoose.connect(config.mongoURL);
