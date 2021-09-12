@@ -39,7 +39,8 @@ async function getAll() {
   await mongoose.connect(config.mongoURL);
   try {
     const db = mongoose.connection;
-    var docs = await db.collection('healthdata')
+    console.log("Connected successfully to server at:", config.mongoURL);
+    await db.collection('healthdata')
         .find({}).toArray(function(err, result) {
           if (err) throw err;
           console.log('Docs:', result);
