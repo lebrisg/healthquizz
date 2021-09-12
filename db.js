@@ -34,3 +34,21 @@ async function init() {
  }
 
 exports.init = init
+
+async function getAll() {
+  await mongoose.connect(config.mongoURL);
+  try {
+    const db = mongoose.connection;
+    var docs = await db.collection('healthdata')
+        .find({}).toArray(function(err, result) {
+          if (err) throw err;
+          console.log('Docs:', result);
+         });
+    db.close();
+   } catch (err) {
+    console.error(err);
+   }
+}
+
+exports.getAll = getAll
+
