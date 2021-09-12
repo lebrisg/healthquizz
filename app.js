@@ -47,7 +47,7 @@ app.get("/", function(request, response) {
 //  response.send('Welcome to user page');
   db.getAll.then(function(result) {
     console.log(result);
-   }
+   })
   response.render("index.html");
  });
 
