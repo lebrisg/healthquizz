@@ -7,8 +7,8 @@ async function init() {
   await mongoose.connect(config.mongoURL);
   console.log("Connected successfully to server at:", config.mongoURL);
   try {
-    const db = mongoose.connection;
-    var nbDocs = await db.collection('healthdata').count();
+    const conn = mongoose.connection;
+    var nbDocs = await conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
 
     // If no document in the database
@@ -21,13 +21,14 @@ async function init() {
       const docs = JSON.parse(data.toString());
 
       // Insert it into the database
-      db.collection('healthdata')
+      conn.collection('healthdata')
         .insertMany(docs, function(err, result) {
           if (err) throw err;
           console.log('Inserted docs:', result.insertedCount);
+          conn.close();
        });
-     }
-    db.close();
+     } else {
+    conn.close();
    } catch (err) {
     console.error(err);
    }
@@ -38,13 +39,13 @@ exports.init = init
 async function getAll() {
   await mongoose.connect(config.mongoURL);
   try {
-    const db = mongoose.connection;
+    const conn = mongoose.connection;
     //console.log("Connected successfully to server at:", config.mongoURL);
-    db.collection('healthdata')
+    await conn.collection('healthdata')
         .find({}).toArray(function(err, result) {
           if (err) throw err;
           console.log('=>Docs:', result);
-          db.close();
+          conn.close();
           return result;
          });
    } catch (err) {
