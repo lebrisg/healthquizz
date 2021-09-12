@@ -28,7 +28,8 @@ async function init() {
           conn.close();
        });
      } else {
-    conn.close();
+      conn.close();
+     }
    } catch (err) {
     console.error(err);
    }
