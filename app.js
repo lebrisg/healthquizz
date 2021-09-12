@@ -49,7 +49,7 @@ app.get("/", function(req, res) {
 //  db.getAll().then(function(result) {
 //    console.log(result);
   db.getAll().then(result => {
-    console.log(result);
+    console.log("Result:", result);
    });
   res.render("index.html");
  });
