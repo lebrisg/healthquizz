@@ -45,7 +45,9 @@ db.init().catch(err => console.log(err));
 // Deal with HTTP requests
 app.get("/", function(request, response) {
 //  response.send('Welcome to user page');
-  db.getAll().then(function(result) {
+//  db.getAll().then(function(result) {
+//    console.log(result);
+  db.getAll().then(result => {
     console.log(result);
    })
   response.render("index.html");
