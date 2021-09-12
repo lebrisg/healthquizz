@@ -40,12 +40,12 @@ async function getAll() {
   try {
     const db = mongoose.connection;
     console.log("Connected successfully to server at:", config.mongoURL);
-    await db.collection('healthdata')
+    db.collection('healthdata')
         .find({}).toArray(function(err, result) {
           if (err) throw err;
           console.log('Docs:', result);
+          db.close();
          });
-    db.close();
    } catch (err) {
     console.error(err);
    }
