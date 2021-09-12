@@ -43,9 +43,9 @@ if(!config.mongoURL) {
 db.init().catch(err => console.log(err));
 
 // Deal with HTTP requests
-async app.get("/", function(request, response) {
+app.get("/", function(request, response) {
 //  response.send('Welcome to user page');
-  var docs = await db.getAll();
+  var docs = db.getAll();
   console.log(docs);
   response.render("index.html");
  });
