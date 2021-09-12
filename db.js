@@ -41,13 +41,13 @@ async function getAll() {
   try {
     const conn = mongoose.connection;
     //console.log("Connected successfully to server at:", config.mongoURL);
-    await conn.collection('healthdata')
-        .find({}).toArray(function(err, result) {
-          if (err) throw err;
-          console.log('=>Docs:', result);
-          conn.close();
-          return result;
-         });
+    conn.collection('healthdata')
+      .find({}).toArray(function(err, result) {
+        if (err) throw err;
+        console.log('=>Docs:', result);
+        conn.close();
+        return result;
+       });
    } catch (err) {
     console.error(err);
    }
