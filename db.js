@@ -43,7 +43,7 @@ async function getAll() {
     db.collection('healthdata')
         .find({}).toArray(function(err, result) {
           if (err) throw err;
-          //console.log('Docs:', result);
+          console.log('=>Docs:', result);
           db.close();
           return result;
          });
