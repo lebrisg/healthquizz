@@ -45,7 +45,7 @@ async function getAll() {
     conn.collection('healthdata')
       .find({}).toArray(function(err, result) {
         if (err) throw err;
-        console.log('=>Docs:', result);
+        console.log('=>Docs:', await result);
         conn.close();
         return result;
        });
