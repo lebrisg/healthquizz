@@ -1,0 +1,44 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: healthquizz 
+spec:
+  params:
+  - name: APP_NAME
+    description: Name of the application to be built
+  - name: GIT_REPO
+    description: Url of the git repository
+  - name: GIT_REVISION
+    description: Revision to be used from repo of the code for deployment
+  - name: IMAGE_NAME
+    description: Location of the repo where image has to be pushed
+  - name: PATH_CONTEXT
+  - name: VERSION
+    description: Type of image used
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      generateName: pr-quizz-$(tt.params.GIT_REPO)-
+    spec:
+      serviceAccountName: pipeline
+      pipelineRef:
+        name: pp-quizz
+      params:
+      - name: APP_NAME
+        value: healthquizz 
+      - name: git-url
+        value: $(tt.params.GIT_REPO)
+      - name: git-revision
+        value: $(tt.params.GIT_REVISION)
+      - name: IMAGE_NAME
+        value: image-registry.openshift-image-registry.svc:5000/healthquizz/healthquizz
+      workspaces:
+      - name: workspace
+        volumeClaimTemplate:
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 500Mi
