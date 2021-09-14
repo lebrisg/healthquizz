@@ -48,8 +48,8 @@ app.get("/", async (req, res) => {
 //  response.send('Welcome to user page');
 //  db.getAll().then(function(result) {
 //    console.log(result);
-  await db.getAll().then(result => {
-    console.log("Result:", result);
+  db.getAll().then(result => {
+    await console.log("Result:", result);
    });
   res.render("index.html");
  });
