@@ -48,10 +48,11 @@ app.get("/", async (req, res) => {
 //  response.send('Welcome to user page');
 //  db.getAll().then(function(result) {
 //    console.log(result);
-  await db.getAll().then(result => {
-    console.log("Result:", result);
-    res.render("index.html");
+  var docs = await db.getAll().then(result => {
+    //console.log("Result:", result);
    });
+  console.log("Result:", docs);
+  res.render("index.html");
  });
 
 // Expose our metrics at the default URL for Prometheus
