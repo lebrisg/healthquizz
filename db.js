@@ -39,19 +39,17 @@ exports.init = init
 
 async function getAll() {
   await mongoose.connect(config.mongoURL);
-  try {
-    const conn = mongoose.connection;
-    //console.log("Connected successfully to server at:", config.mongoURL);
-    conn.collection('healthdata')
-      .find({}).toArray(function(err, result) {
-        if (err) throw err;
-        console.log('=>Docs:', result);
-        conn.close();
-        return result;
-       });
-   } catch (err) {
+  const conn = mongoose.connection;
+  //console.log("Connected successfully to server at:", config.mongoURL);
+  conn.collection('healthdata')
+    .find({}).toArray().then(result => {
+      console.log('=>Docs:', result);
+      return result;
+   }).catch (err => {
     console.error(err);
-   }
+   }).finally(() => {
+    conn.close();
+   });
 }
 
 exports.getAll = getAll
