@@ -51,7 +51,8 @@ app.get("/", async (req, res) => {
    })
    .catch(err => {
      console.error(err);
- }));
+  })
+});
 
 // Expose our metrics at the default URL for Prometheus
 app.get('/metrics', async (req, res) => {
