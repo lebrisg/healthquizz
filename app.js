@@ -43,8 +43,8 @@ if(!config.mongoURL) {
 db.init().catch(err => console.log(err));
 
 // Deal with HTTP requests
-app.get("/", async (req, res) => {
-  await db.getAll()
+app.get("/",  (req, res) => {
+  db.getAll()
     .then(docs => {
       console.log("Result:", docs);
       res.render("index.html");
