@@ -44,13 +44,7 @@ db.init().catch(err => console.log(err));
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
-//app.get("/", function(req, res) {
-//  response.send('Welcome to user page');
-//  db.getAll().then(function(result) {
-//    console.log(result);
-  var docs = await db.getAll().then(result => {
-    //console.log("Result:", result);
-   });
+  var docs = await db.getAll().then();
   console.log("Result:", docs);
   res.render("index.html");
  });

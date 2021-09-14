@@ -40,13 +40,12 @@ exports.init = init
 async function getAll() {
   await mongoose.connect(config.mongoURL).catch(err => { console.log(err); });
   const conn = mongoose.connection;
-  //console.log("Connected successfully to server at:", config.mongoURL);
   conn.collection('healthdata')
     .find({}).toArray().then(result => {
       console.log('=>Docs:', result);
       return result;
    }).catch (err => {
-    console.error(err);
+    console.log(err);
    }).finally(() => {
     conn.close();
    });
