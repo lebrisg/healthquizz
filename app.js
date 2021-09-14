@@ -43,12 +43,12 @@ if(!config.mongoURL) {
 db.init().catch(err => console.log(err));
 
 // Deal with HTTP requests
-//app.get("/", async (req, res) => {
-app.get("/", function(req, res) {
+app.get("/", async (req, res) => {
+//app.get("/", function(req, res) {
 //  response.send('Welcome to user page');
 //  db.getAll().then(function(result) {
 //    console.log(result);
-  db.getAll().then(result => {
+  await db.getAll().then(result => {
     console.log("Result:", result);
     res.render("index.html");
    });
