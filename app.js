@@ -44,10 +44,14 @@ db.init().catch(err => console.log(err));
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
-  var docs = await db.getAll().then();
-  console.log("Result:", docs);
-  res.render("index.html");
- });
+  await db.getAll()
+    .then(docs => {
+      console.log("Result:", docs);
+      res.render("index.html");
+   })
+   .catch(err => {
+     console.error(err);
+ }));
 
 // Expose our metrics at the default URL for Prometheus
 app.get('/metrics', async (req, res) => {
