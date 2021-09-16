@@ -7,7 +7,7 @@ async function init() {
   client.connect(config.mongoURL, (err, conn) => {
     if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
-    var nbDocs = await conn.collection('healthdata').count();
+    var nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
 
     // If no document in the database
