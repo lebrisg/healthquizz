@@ -37,8 +37,9 @@ async function init() {
 
 exports.init = init
 
-function getAll() {
-  mongoose.connect(config.mongoURL).catch(err => { console.log(err); });
+async function getAll() {
+  await mongoose.connect(config.mongoURL).catch(err => { console.log(err); });
+  debugger;
   const conn = mongoose.connection;
   conn.collection('healthdata')
     .find({}).toArray().then(result => {
