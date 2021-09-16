@@ -35,17 +35,19 @@ function init() {
 
 exports.init = init
 
-async function getAll() {
-  mongoose.connect(config.mongoURL).catch(err => { console.log(err); });
-  const conn = mongoose.connection;
-  conn.collection('healthdata')
-    .find({}).toArray().then(result => {
-      console.log('=>Docs:', result);
-      return result;
-   }).catch (err => {
-    console.log(err);
-   }).finally(() => {
-    conn.close();
+function getAll() {
+  const client = mongodb.MongoClient;
+  client.connect(config.mongoURL, (err, conn) => {
+    if (err) throw err;
+    conn.collection('healthdata')
+      .find({}).toArray().then(result => {
+        console.log('=>Docs:', result);
+        return result;
+       }).catch (err => {
+        console.log(err);
+       }).finally(() => {
+        conn.close();
+     });
    });
 }
 
