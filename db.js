@@ -4,10 +4,11 @@ const fs = require('fs');
 var config = require("./config");
 
 async function init() {
-  await mongoose.connect(config.mongoURL);
-  console.log("Connected successfully to server at:", config.mongoURL);
+//  await mongoose.connect(config.mongoURL);
   try {
-    const conn = mongoose.connection;
+//    const conn = mongoose.connection;
+    const conn = mongodb.MongoClient.connect(config.mongoURL);
+    console.log("Connected successfully to server at:", config.mongoURL);
     var nbDocs = await conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
 
@@ -39,12 +40,10 @@ exports.init = init
 
 async function getAll() {
   mongoose.connect(config.mongoURL).catch(err => { console.log(err); });
-  debugger;
   const conn = mongoose.connection;
   conn.collection('healthdata')
     .find({}).toArray().then(result => {
       console.log('=>Docs:', result);
-      debugger;
       return result;
    }).catch (err => {
     console.log(err);
