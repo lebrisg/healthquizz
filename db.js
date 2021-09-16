@@ -1,13 +1,11 @@
 var mongodb = require("mongodb");
-var mongoose = require("mongoose");
 const fs = require('fs');
 var config = require("./config");
 
 async function init() {
-//  await mongoose.connect(config.mongoURL);
-  try {
-//    const conn = mongoose.connection;
-    const conn = mongodb.MongoClient.connect(config.mongoURL);
+  const client = mongodb.MongorClient;
+  client.connect(config.mongoURL, (err, conn) => {
+    if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
     var nbDocs = await conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
@@ -26,14 +24,13 @@ async function init() {
         .insertMany(docs, function(err, result) {
           if (err) throw err;
           console.log('Inserted docs:', result.insertedCount);
-          conn.close();
        });
-     } else {
-      conn.close();
      }
-   } catch (err) {
-    console.error(err);
-   }
+   }).catch ((err) => {
+    console.log(err);
+   }).finally(() => {
+    conn.close();
+   });
  }
 
 exports.init = init
