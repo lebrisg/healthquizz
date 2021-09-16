@@ -3,7 +3,7 @@ const fs = require('fs');
 var config = require("./config");
 
 async function init() {
-  const client = mongodb.MongorClient;
+  const client = mongodb.MongoClient;
   client.connect(config.mongoURL, (err, conn) => {
     if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
