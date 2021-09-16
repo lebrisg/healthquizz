@@ -2,7 +2,7 @@ var mongodb = require("mongodb");
 const fs = require('fs');
 var config = require("./config");
 
-async function init() {
+function init() {
   const client = mongodb.MongoClient;
   client.connect(config.mongoURL, (err, conn) => {
     if (err) throw err;
@@ -26,7 +26,7 @@ async function init() {
           console.log('Inserted docs:', result.insertedCount);
        });
      }
-   }).catch ((err) => {
+   }).catch((err) => {
     console.log(err);
    }).finally(() => {
     conn.close();
