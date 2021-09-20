@@ -42,19 +42,16 @@ if(!config.mongoURL) {
 // Initialize the database
 db.init();
 
-let docs = db.getAll();
-console.log("Result:", docs);
+//let docs = db.getAll();
+//console.log("Result:", docs);
 
 // Deal with HTTP requests
-app.get("/",  (req, res) => {
-//  db.getAll()
-//    .then(docs => {
-//      console.log("Result:", docs);
+app.get("/",  async (req, res) => {
+  await db.getAll()
+    .then(docs => {
+      console.log("Result:", docs);
       res.render("index.html");
-//   })
-//   .catch(err => {
-//     console.error(err);
-//  })
+   });
 });
 
 // Expose our metrics at the default URL for Prometheus
