@@ -3,10 +3,11 @@ const fs = require('fs');
 const config = require("./config");
 
 function init() {
+  let nbDocs = 0;
   MongoClient.connect(config.mongoURL, (err, conn) => {
     if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
-    var nbDocs = conn.collection('healthdata').count();
+    nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
     conn.close();
    });
