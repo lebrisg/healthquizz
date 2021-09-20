@@ -40,7 +40,7 @@ if(!config.mongoURL) {
  }
 
 // Initialize the database
-db.init().catch(err => console.log(err));
+db.init();
 
 db.getAll().then(docs => {
   console.log("Result:", docs);
