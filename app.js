@@ -42,9 +42,8 @@ if(!config.mongoURL) {
 // Initialize the database
 db.init();
 
-//db.getAll(err, {
-//  console.log("Result:", docs);
-// });
+let docs = db.getAll();
+console.log("Result:", docs);
 
 // Deal with HTTP requests
 app.get("/",  (req, res) => {
