@@ -4,11 +4,11 @@ const config = require("./config");
 
 function init() {
   let nbDocs = 0;
-  MongoClient.connect(config.mongoURL, function(err, conn) {
+  MongoClient.connect(config.mongoURL, function(err, db) {
     if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
-    conn.collection('healthdata').count(function(err, nbDocs) {
-      conn.close();
+    db.collection('healthdata').count(function(err, nbDocs) {
+      db.close();
      });
 //    nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
@@ -24,15 +24,15 @@ function init() {
     // Transform it into Json
     const docs = JSON.parse(data.toString());
 
-    MongoClient.connect(config.mongoURL, (err, conn) => {
+    MongoClient.connect(config.mongoURL, function(err, db) {
       if (err) throw err;
       // Insert it into the database
-      conn.collection('healthdata')
+      db.collection('healthdata')
         .insertMany(docs, function(err, result) {
           if (err) throw err;
           console.log('Inserted docs:', result.insertedCount);
        });
-      conn.close();
+      db.close();
      });
    }
 }
@@ -40,12 +40,12 @@ function init() {
 exports.init = init
 
 function getAll() {
-  MongoClient.connect(config.mongoURL, (err, conn) => {
+  MongoClient.connect(config.mongoURL, function(err, db) {
     if (err) throw err;
-    conn.collection('healthdata')
+    db.collection('healthdata')
       .find({}).toArray().then(result => {
         console.log('=>Docs:', result);
-        conn.close();
+        db.close();
         return result;
      });
    });
