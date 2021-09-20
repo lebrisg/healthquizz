@@ -13,7 +13,7 @@ async function init() {
 //    nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
 //    conn.close();
-   });
+}
 
   // If no document in the database
 //  if (nbDocs == 0) {
@@ -35,7 +35,7 @@ async function init() {
 //      db.close();
 //     });
 //   }
-}
+//}
 
 exports.init = init
 
