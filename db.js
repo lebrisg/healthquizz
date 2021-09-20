@@ -10,30 +10,27 @@ async function init() {
   const db = client.db(config.mongoDatabase);
   nbDocs = await db.collection("healthdata").count();
     console.log('nbDocs:', nbDocs);
-  client.close();
-}
 
   // If no document in the database
-//  if (nbDocs == 0) {
+  if (nbDocs == 0) {
     // Read the file healthdata
-//    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
-//    console.log(data);
+    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
+    console.log(data);
 
     // Transform it into Json
-//    const docs = JSON.parse(data.toString());
+    const docs = JSON.parse(data.toString());
 
 //    MongoClient.connect(config.mongoURL, function(err, db) {
 //      if (err) throw err;
       // Insert it into the database
-//      db.collection('healthdata')
-//        .insertMany(docs, function(err, result) {
-//          if (err) throw err;
-//          console.log('Inserted docs:', result.insertedCount);
-//       });
-//      db.close();
-//     });
-//   }
-//}
+      db.collection('healthdata')
+        .insertMany(docs, function(err, result) {
+          if (err) throw err;
+          console.log('Inserted docs:', result.insertedCount);
+       });
+   }
+  client.close();
+}
 
 exports.init = init
 
