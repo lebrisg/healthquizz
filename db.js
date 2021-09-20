@@ -1,10 +1,9 @@
-var mongodb = require("mongodb");
+const MongoClient = require("mongodb").MongoClient;
 const fs = require('fs');
-var config = require("./config");
+const config = require("./config");
 
 function init() {
-  const client = mongodb.MongoClient;
-  client.connect(config.mongoURL, (err, conn) => {
+  MongoClient.connect(config.mongoURL, (err, conn) => {
     if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
     var nbDocs = conn.collection('healthdata').count();
@@ -24,7 +23,7 @@ function init() {
     // Transform it into Json
     const docs = JSON.parse(data.toString());
 
-    client.connect(config.mongoURL, (err, conn) => {
+    MongoClient.connect(config.mongoURL, (err, conn) => {
       if (err) throw err;
       // Insert it into the database
       conn.collection('healthdata')
@@ -43,8 +42,7 @@ function init() {
 exports.init = init
 
 function getAll() {
-  const client = mongodb.MongoClient;
-  client.connect(config.mongoURL, (err, conn) => {
+  MongoClient.connect(config.mongoURL, (err, conn) => {
     if (err) throw err;
     conn.collection('healthdata')
       .find({}).toArray().then(result => {
