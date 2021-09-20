@@ -2,12 +2,12 @@ const MongoClient = require("mongodb").MongoClient;
 const fs = require('fs');
 const config = require("./config");
 
-function init() {
+async function init() {
   let nbDocs = 0;
   MongoClient.connect(config.mongoURL, (err, conn) => {
     if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
-    nbDocs = conn.collection('healthdata').count();
+    nbDocs = await conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
     conn.close();
    });
