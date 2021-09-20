@@ -1,15 +1,15 @@
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient } = require("mongodb");
 const fs = require('fs');
 const config = require("./config");
 
-function init() {
+async function init() {
   let nbDocs = 0;
-  MongoClient.connect(config.mongoURL, function(err, db) {
-    if (err) throw err;
-    console.log("Connected successfully to server at:", config.mongoURL);
-    db.collection('healthdata').count(function(err, nbDocs) {
-      db.close();
-     });
+  const client = new MongoClient(config.mongoURL);
+  await client.connect();
+  console.log("Connected successfully to server at:", config.mongoURL);
+  const db = client.db(config.mongoDatabase);
+  await db.collection("healthdata").count().then(nbDocs => {
+   });
 //    nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
 //    conn.close();
