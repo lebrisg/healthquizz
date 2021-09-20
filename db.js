@@ -8,8 +8,7 @@ async function init() {
   await client.connect();
   console.log("Connected successfully to server at:", config.mongoURL);
   const db = client.db(config.mongoDatabase);
-  await db.collection("healthdata").count().then(nbDocs => {
-   });
+  nbDocs = await db.collection("healthdata").count());
 //    nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
 //    conn.close();
