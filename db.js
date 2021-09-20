@@ -2,14 +2,17 @@ const MongoClient = require("mongodb").MongoClient;
 const fs = require('fs');
 const config = require("./config");
 
-async function init() {
+function init() {
   let nbDocs = 0;
-  MongoClient.connect(config.mongoURL, (err, conn) => {
+  MongoClient.connect(config.mongoURL, function(err, conn) {
     if (err) throw err;
     console.log("Connected successfully to server at:", config.mongoURL);
-    nbDocs = await conn.collection('healthdata').count();
+    conn.collection('healthdata').count(function(err, nbDocs) {
+      conn.close();
+     });
+//    nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
-    conn.close();
+//    conn.close();
    });
 
   // If no document in the database
