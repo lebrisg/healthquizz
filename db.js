@@ -8,9 +8,6 @@ function init() {
     console.log("Connected successfully to server at:", config.mongoURL);
     var nbDocs = conn.collection('healthdata').count();
     console.log('nbDocs:', nbDocs);
-   }).catch((err) => {
-    console.log(err);
-   }).finally(() => {
     conn.close();
    });
 
@@ -31,9 +28,6 @@ function init() {
           if (err) throw err;
           console.log('Inserted docs:', result.insertedCount);
        });
-     }).catch((err) => {
-      console.log(err);
-     }).finally(() => {
       conn.close();
      });
    }
@@ -47,11 +41,8 @@ function getAll() {
     conn.collection('healthdata')
       .find({}).toArray().then(result => {
         console.log('=>Docs:', result);
-        return result;
-       }).catch (err => {
-        console.log(err);
-       }).finally(() => {
         conn.close();
+        return result;
      });
    });
 }
