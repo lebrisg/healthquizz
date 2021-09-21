@@ -24,6 +24,10 @@ collectDefaultMetrics({ prefix: 'healthquizz:' });
 // Define render engine used
 app.engine('html', ejs.renderFile);
 
+// Define health checks
+app.get("/ready", (req, res) => res.status(200).json({ status: "ok" }));
+app.get("/live", (req, res) => res.status(200).json({ status: "ok" }));
+
 // Define public directory
 //app.use(express.static(__dirname + '/public'));
 
@@ -45,7 +49,8 @@ db.init();
 //let docs = db.getAll();
 //console.log("Result:", docs);
 
-let lines = [];
+var lines = [];
+app.locals.lines = lines;
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
