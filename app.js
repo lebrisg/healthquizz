@@ -55,7 +55,7 @@ app.locals.lines = lines;
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
   await db.getAll(function(docs) {
-    //console.log("Result:", docs);
+    console.log("Result:", docs);
     lines = docs;
     res.render("displayAll.html");
    });
