@@ -47,11 +47,10 @@ db.init();
 
 // Deal with HTTP requests
 app.get("/",  async (req, res) => {
-  await db.getAll()
-    .then(docs => {
-      console.log("Result:", docs);
-      res.render("index.html");
+  await db.getAll(function(docs) {
+    console.log("Result:", docs);
    });
+  res.render("index.html");
 });
 
 // Expose our metrics at the default URL for Prometheus

@@ -32,7 +32,7 @@ async function init() {
 
 exports.init = init
 
-async function getAll() {
+async function getAll(callback) {
   const client = new MongoClient(config.mongoURL);
   await client.connect();
   const db = client.db(config.mongoDatabase);
@@ -40,7 +40,7 @@ async function getAll() {
     .find({}).toArray().then(result => {
       console.log('=>Docs:', result);
       client.close();
-      return result;
+      callback(result);
      });
 }
 
