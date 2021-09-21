@@ -45,11 +45,14 @@ db.init();
 //let docs = db.getAll();
 //console.log("Result:", docs);
 
+let lines = [];
+
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
-  await db.getAll(function(lines) {
+  await db.getAll(function(docs) {
     //console.log("Result:", docs);
-    res.render("displayAll.html", lines);
+    lines = docs;
+    res.render("displayAll.html");
    });
 });
 
