@@ -7,9 +7,10 @@
 </head>
 <body>
   <h1>Liste:</h1>
-  <% lines.forEach(function(line) { %>
-    <%= line %>
-  <% }) %>
+  <% if (lines.length) { %>
+    <% lines.forEach(function(line) { %>
+      <%= line %>
+    <% }) %>
   <% } else { %>
   Rien !
   <% } %>
