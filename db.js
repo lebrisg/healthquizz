@@ -9,13 +9,13 @@ async function init() {
   console.log("Connected successfully to server at:", config.mongoURL);
   const db = client.db(config.mongoDatabase);
   nbDocs = await db.collection('healthdata').count();
-  console.log('nbDocs:', nbDocs);
+//  console.log('nbDocs:', nbDocs);
 
   // If no document in the database
   if (nbDocs == 0) {
     // Read the file healthdata
     const data = fs.readFileSync('/mnt/healthdata', 'utf8');
-    console.log(data);
+ //   console.log(data);
 
     // Transform it into Json
     const docs = JSON.parse(data.toString());
@@ -38,7 +38,7 @@ async function getAll(callback) {
   const db = client.db(config.mongoDatabase);
   await db.collection('healthdata')
     .find({}).toArray().then(result => {
-      console.log('=>Docs:', result);
+//      console.log('=>Docs:', result);
       client.close();
       callback(result);
      });
