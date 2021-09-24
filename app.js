@@ -21,6 +21,8 @@ collectDefaultMetrics({ prefix: 'healthquizz:' });
 
 // Define render engine used
 app.engine('html', ejs.renderFile);
+//app.set("views", path.resolve(__dirname, "views"));
+//app.set("view engine", "ejs");
 
 // Define health checks
 app.get("/ready", (req, res) => res.status(200).json({ status: "ok" }));
@@ -57,7 +59,7 @@ app.locals.lines = lines;
 app.get("/", async (req, res) => {
   await db.getAll(function(docs) {
     lines = docs;
-    app.locals.lines = docs;
+//    app.locals.lines = docs;
     console.log("Result:", lines);
     console.log("Result2:", app.locals.lines);
     res.render("displayAll.html");
