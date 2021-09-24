@@ -9,7 +9,8 @@
   <h1>Liste:</h1>
   <% if (lines.length) { %>
     <% lines.forEach(function(line) { %>
-      <%= line %>
+      <%= line.nom %>
+      <%= line.couleur %>
     <% }) %>
   <% } else { %>
   Rien !
