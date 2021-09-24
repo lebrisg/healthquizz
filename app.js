@@ -56,6 +56,7 @@ app.locals.lines = lines;
 app.get("/", async (req, res) => {
   await db.getAll(function(docs) {
     lines = docs;
+    app.locals.lines = docs;
     console.log("Result:", lines);
     console.log("Result2:", app.locals.lines);
     res.render("displayAll.html");
