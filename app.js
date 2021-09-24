@@ -2,16 +2,14 @@ var http = require("http");
 var morgan = require("morgan");
 var express = require("express");
 var ejs = require("ejs");
-//const { MongoClient } = require("mongodb");
-//var mongodb = require("mongodb");
-//var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 var promClient = require("prom-client");
 var config = require("./config");
-//const fs = require('fs');
 var db = require("./db");
 
 // Assign app variable
 var app = express();
+
 // Disable x-powered header for security reason
 app.disable("x-powered-by");
 
@@ -33,6 +31,9 @@ app.get("/live", (req, res) => res.status(200).json({ status: "ok" }));
 
 // Display requests at the console
 app.use(morgan("combined"));
+
+// Parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Display initial configuration
 config.display();
