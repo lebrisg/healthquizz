@@ -8,11 +8,9 @@ async function init() {
   const client = new MongoClient(config.mongoURL);
   await client.connect();
   console.log("Connected successfully to server at:", config.mongoURL);
-  console.log("Step 1");
   const db = client.db(config.mongoDatabase);
-  console.log("Step 2");
   nbDocs = await db.collection('healthdata').count();
-  console.log("Step 3", nbDocs);
+  //console.log("NbDocs:", nbDocs);
   client.close();
 
   // If no document in the database
@@ -22,7 +20,6 @@ async function init() {
 
     // Transform it into Json
     const docs = JSON.parse(data.toString());
-    console.log("Step 4:", docs);
 
     // Insert it into the database
     const client = new MongoClient(config.mongoURL);
@@ -34,7 +31,6 @@ async function init() {
         console.log('Inserted docs:', result.insertedCount);
      });
    }
-  console.log("Step 5");
   client.close();
 }
 

@@ -54,15 +54,15 @@ app.locals.lines = lines;
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
-//  await db.getOneItem(function(docs) {
-//    docs.forEach(function(line) {
-//      lines.push({
-//        name: line.name,
-//        color: line.color,
-//       });
-//     });
+  await db.getOneItem(function(docs) {
+    docs.forEach(function(line) {
+      lines.push({
+        name: line.name,
+        color: line.color,
+       });
+     });
     res.render("displayAll.html");
-//   });
+   });
 });
 
 // Expose our metrics at the default URL for Prometheus
