@@ -50,8 +50,9 @@ async function getOneItem(callback) {
   const client = new MongoClient(config.mongoURL);
   await client.connect();
   const db = client.db(config.mongoDatabase);
-  await db.collection('healthdata')
-    .find({}).toArray().then(result => {
+  await db.healthdata.aggregate([{$sample: {size: 1}}])
+    .toArray().then(result => {
+      console.log(result);
       client.close();
       callback(result);
      });
