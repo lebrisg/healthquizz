@@ -47,7 +47,7 @@ if(!config.mongoURL) {
  }
 
 // Initialize the database
-//db.init();
+db.init();
 
 var lines = [];
 app.locals.lines = lines;
