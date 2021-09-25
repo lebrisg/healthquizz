@@ -62,7 +62,7 @@ app.get("/", async (req, res) => {
 //       });
 //     });
     res.render("displayAll.html");
-   });
+//   });
 });
 
 // Expose our metrics at the default URL for Prometheus
