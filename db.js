@@ -21,6 +21,7 @@ async function init() {
 
     // Transform it into Json
     const docs = JSON.parse(data.toString());
+    console.log("Step 4:" docs);
 
     // Insert it into the database
     db.collection('healthdata')
