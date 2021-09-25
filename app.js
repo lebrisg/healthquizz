@@ -58,9 +58,9 @@ app.get("/", async (req, res) => {
     docs.forEach(function(line) {
       lines.push({
         category: line.category,
-        name: line.name,
-        protein: line.protein,
-        color: line.color,
+        name:     line.name,
+        protein:  line.protein,
+        color:    line.color
        });
      });
     res.render("displayAll.html");
