@@ -49,14 +49,12 @@ if(!config.mongoURL) {
 // Initialize the database
 db.init();
 
-db.getOneItem();
-
 var lines = [];
 app.locals.lines = lines;
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
-  await db.getAllItems(function(docs) {
+  await db.getOneItem(function(docs) {
     docs.forEach(function(line) {
       lines.push({
         nom: line.nom,
