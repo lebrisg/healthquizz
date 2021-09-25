@@ -10,7 +10,11 @@
   <% if (lines.length) { %>
     <% lines.forEach(function(line) { %>
       <div>
-        <%= line.category %>: <%= line.name %> / <%= line.protein %> / <%= line.color %>
+        <%= line.category %>: <%= line.name %>
+        <% if (line.protein == "oui") { %>
+           <% (P) %>
+        <% } %> 
+        / <%= line.color %>
       </div>
     <% }) %>
   <% } else { %>
