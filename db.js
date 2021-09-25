@@ -12,7 +12,7 @@ async function init() {
   const db = client.db(config.mongoDatabase);
   console.log("Step 2");
   nbDocs = await db.collection('healthdata').count();
-  console.log("Step 3");
+  console.log("Step 3", nbDocs);
 
   // If no document in the database
   if (nbDocs == 0) {
