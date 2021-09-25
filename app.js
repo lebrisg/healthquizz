@@ -54,7 +54,7 @@ app.locals.lines = lines;
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
-  await db.getAll(function(docs) {
+  await db.getAllItems(function(docs) {
     docs.forEach(function(line) {
       lines.push({
         nom: line.nom,

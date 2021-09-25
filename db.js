@@ -2,6 +2,7 @@ const { MongoClient } = require("mongodb");
 const fs = require('fs');
 const config = require("./config");
 
+// Initialize the database content
 async function init() {
   let nbDocs = 0;
   const client = new MongoClient(config.mongoURL);
@@ -9,13 +10,11 @@ async function init() {
   console.log("Connected successfully to server at:", config.mongoURL);
   const db = client.db(config.mongoDatabase);
   nbDocs = await db.collection('healthdata').count();
-//  console.log('nbDocs:', nbDocs);
 
   // If no document in the database
   if (nbDocs == 0) {
     // Read the file healthdata
     const data = fs.readFileSync('/mnt/healthdata', 'utf8');
- //   console.log(data);
 
     // Transform it into Json
     const docs = JSON.parse(data.toString());
@@ -32,17 +31,31 @@ async function init() {
 
 exports.init = init
 
-async function getAll(callback) {
+// Get all items from the database
+async function getAllItems(callback) {
   const client = new MongoClient(config.mongoURL);
   await client.connect();
   const db = client.db(config.mongoDatabase);
   await db.collection('healthdata')
     .find({}).toArray().then(result => {
-//      console.log('=>Docs:', result);
       client.close();
       callback(result);
      });
 }
 
-exports.getAll = getAll
+exports.getAllItems = getAllItems
+
+// Get one item randomly from the database
+async function getOneItem(callback) {
+  const client = new MongoClient(config.mongoURL);
+  await client.connect();
+  const db = client.db(config.mongoDatabase);
+  await db.collection('healthdata')
+    .find({}).toArray().then(result => {
+      client.close();
+      callback(result);
+     });
+}
+
+exports.getOneItem = getOneItem
 
