@@ -13,6 +13,7 @@ async function init() {
   console.log("Step 2");
   nbDocs = await db.collection('healthdata').count();
   console.log("Step 3", nbDocs);
+  client.close();
 
   // If no document in the database
   if (nbDocs == 0) {
@@ -24,6 +25,9 @@ async function init() {
     console.log("Step 4:", docs);
 
     // Insert it into the database
+    const client = new MongoClient(config.mongoURL);
+    await client.connect();
+    const db = client.db(config.mongoDatabase);
     db.collection('healthdata')
       .insertMany(docs, function(err, result) {
         if (err) throw err;
