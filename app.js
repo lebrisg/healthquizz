@@ -57,8 +57,8 @@ app.get("/", async (req, res) => {
   await db.getOneItem(function(docs) {
     docs.forEach(function(line) {
       lines.push({
-        nom: line.nom,
-        couleur: line.couleur,
+        name: line.name,
+        color: line.color,
        });
      });
     res.render("displayAll.html");
