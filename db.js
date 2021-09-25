@@ -30,6 +30,7 @@ async function init() {
         console.log('Inserted docs:', result.insertedCount);
      });
    }
+  console.log("Step 5");
   client.close();
 }
 
