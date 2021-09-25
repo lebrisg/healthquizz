@@ -67,3 +67,15 @@ spec:
     taskRef:
       kind: ClusterTask
       name: openshift-client
+  - name: cleanup
+    params:
+    - name: SCRIPT
+      value: |
+        oc get pr --sort-by=.metadata.creationTimestamp -o name | head -n-1 | (while read -r NAME; do oc delete "$NAME"; done)
+        oc get pod | awk '{if ($3 == "Completed") system("oc delete pod " $1 )}' 
+        oc get replicationcontroller | awk '{if ($4 == "0") system("oc delete replicationcontroller " $1 )}'
+    runAfter:
+    - deploy
+    taskRef:
+      kind: ClusterTask
+      name: openshift-client
