@@ -6,7 +6,6 @@ var bodyParser = require("body-parser");
 var promClient = require("prom-client");
 var config = require("./config");
 var db = require("./db");
-var html = require("html");
 
 // Assign app variable
 var app = express();
