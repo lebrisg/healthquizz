@@ -65,7 +65,7 @@ app.get("/", async (req, res) => {
         color:    line.color
        });
      });
-    res.render("displayAll.html");
+    res.render("displayAll");
    });
 });
 
