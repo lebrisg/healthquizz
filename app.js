@@ -20,9 +20,10 @@ const collectDefaultMetrics = promClient.collectDefaultMetrics;
 collectDefaultMetrics({ prefix: 'healthquizz:' });
 
 // Define render engine used
-app.engine('html', ejs.renderFile);
+//app.engine('html', ejs.renderFile);
 //app.set("views", path.resolve(__dirname, "views"));
-//app.set("view engine", "ejs");
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 // Define health checks
 app.get("/ready", (req, res) => res.status(200).json({ status: "ok" }));
