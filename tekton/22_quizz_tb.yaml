@@ -10,7 +10,3 @@ spec:
     value: $(body.repository.name)
   - name: GIT_REVISION 
     value: $(body.head_commit.id)
-  - name: PATH_CONTEXT
-    value: .
-  - name: VERSION
-    value: 14-ubi7
