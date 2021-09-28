@@ -6,10 +6,12 @@ spec:
   params:
   - name: APP_NAME
     description: Name of the application to be built
-  - name: GIT_REPO
+  - name: git-repo-url
     description: Url of the git repository
-  - name: GIT_REVISION
+  - name: git-revision
     description: Revision to be used from repo of the code for deployment
+  - name: git-repo-name
+    description: The name of the deployment to be created / patched
   - name: IMAGE_NAME
     description: Location of the repo where image has to be pushed
   - name: PATH_CONTEXT
@@ -19,7 +21,7 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      generateName: pr-quizz-$(tt.params.GIT_REPO)-
+      generateName: pr-quizz-$(tt.params.git-repo-name)-
     spec:
       serviceAccountName: pipeline
       pipelineRef:
@@ -28,9 +30,9 @@ spec:
       - name: APP_NAME
         value: healthquizz 
       - name: git-url
-        value: $(tt.params.GIT_REPO)
+        value: $(tt.params.git-repo-url)
       - name: git-revision
-        value: $(tt.params.GIT_REVISION)
+        value: $(tt.params.git-revision)
       - name: IMAGE_NAME
         value: image-registry.openshift-image-registry.svc:5000/healthquizz/healthquizz
       workspaces:
