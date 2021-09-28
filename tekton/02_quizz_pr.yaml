@@ -7,7 +7,7 @@ spec:
   params:
     - name: APP_NAME
       value: healthquizz
-    - name: GIT_REPO
+    - name: GIT_REPO_URL
       value: 'https://github.com/lebrisg/healthquizz'
     - name: GIT_REVISION
       value: main
