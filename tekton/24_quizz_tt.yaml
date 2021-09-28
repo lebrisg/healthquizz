@@ -10,6 +10,9 @@ spec:
     description: Revision to be used from repo of the code for deployment
   - name: GIT_REPO_NAME 
     description: The name of the deployment to be created / patched
+  - name: PATH_CONTEXT
+  - name: VERSION
+    description: Type of image used
   resourcetemplates:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
