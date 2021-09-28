@@ -55,6 +55,7 @@ app.locals.items = items;
 
 // Display the list of categories
 app.get("/", async (req, res) => {
+  items=[];
   await db.getCategoryList(function(docs) {
     docs.forEach(function(item) {
       console.log(item);
@@ -69,6 +70,7 @@ app.get("/", async (req, res) => {
 
 // Display all the items
 app.get("/item", async (req, res) => {
+  items=[];
   await db.getOneItem(function(docs) {
     docs.forEach(function(item) {
       items.push({
