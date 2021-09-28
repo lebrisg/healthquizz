@@ -4,19 +4,12 @@ metadata:
   name: healthquizz 
 spec:
   params:
-  - name: APP_NAME
-    description: Name of the application to be built
   - name: GIT_REPO_URL 
     description: Url of the git repository
   - name: GIT_REVISION 
     description: Revision to be used from repo of the code for deployment
   - name: GIT_REPO_NAME 
     description: The name of the deployment to be created / patched
-  - name: IMAGE_NAME
-    description: Location of the repo where image has to be pushed
-  - name: PATH_CONTEXT
-  - name: VERSION
-    description: Type of image used
   resourcetemplates:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
@@ -27,7 +20,7 @@ spec:
       pipelineRef:
         name: pp-quizz
       params:
-      - name: APP_NAME
+      - name: GIT_REPO_NAME
         value: healthquizz 
       - name: GIT_REPO_URL 
         value: $(tt.params.GIT_REPO_URL)

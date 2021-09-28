@@ -4,7 +4,7 @@ metadata:
   name: pp-quizz
 spec:
   params:
-  - name: APP_NAME
+  - name: GIT_REPO_NAME
     type: string
     description: Name of the application to be built
   - name: GIT_REPO_URL
@@ -61,7 +61,7 @@ spec:
   - name: deploy
     params:
     - name: SCRIPT
-      value: oc rollout status dc/$(params.APP_NAME)
+      value: oc rollout status dc/$(params.GIT_REPO_NAME)
     runAfter:
     - build
     taskRef:

@@ -5,7 +5,7 @@ metadata:
 spec:
   serviceAccountName: pipeline
   params:
-    - name: APP_NAME
+    - name: GIT_REPO_NAME
       value: healthquizz
     - name: GIT_REPO_URL
       value: 'https://github.com/lebrisg/healthquizz'
