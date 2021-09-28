@@ -55,7 +55,6 @@ app.locals.items = items;
 
 // Display the list of categories
 app.get("/", async (req, res) => {
-  items=[];
   await db.getCategoryList(function(docs) {
     docs.forEach(function(item) {
       console.log(item);
@@ -63,14 +62,13 @@ app.get("/", async (req, res) => {
         category: item._id
        });
      });
+    res.render("displayCategories");
+    docs.forEach(function(item) { items.pop(); });
    });
-  res.render("displayCategories");
-  items=[];
  });
 
 // Display all the items
 app.get("/item", async (req, res) => {
-  items=[];
   await db.getOneItem(function(docs) {
     docs.forEach(function(item) {
       items.push({
@@ -80,9 +78,9 @@ app.get("/item", async (req, res) => {
         color:    item.color
        });
      });
+    res.render("displayAll");
+    docs.forEach(function(item) { items.pop(); });
    });
- res.render("displayAll");
- items=[];
 });
 
 // Expose our metrics at the default URL for Prometheus
