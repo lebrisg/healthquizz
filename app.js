@@ -53,8 +53,20 @@ db.init();
 var items = [];
 app.locals.items = items;
 
-// Deal with HTTP requests
+// Display the list of categories
 app.get("/", async (req, res) => {
+  await db.getCategoryList(function(docs) {
+    docs.forEach(function(item) {
+      items.push({
+        category: item.category
+       });
+     });
+    res.render("displayCategories");
+   });
+});
+
+// Display all the items
+app.get("/item", async (req, res) => {
   await db.getOneItem(function(docs) {
     docs.forEach(function(item) {
       items.push({

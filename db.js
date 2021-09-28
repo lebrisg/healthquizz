@@ -57,7 +57,7 @@ async function getOneItem(callback) {
   const db = client.db(config.mongoDatabase);
   await db.collection('healthdata').aggregate([{$sample: {size: 1}}])
     .toArray().then(result => {
-      console.log(result);
+      //console.log(result);
       client.close();
       callback(result);
      });
@@ -65,3 +65,16 @@ async function getOneItem(callback) {
 
 exports.getOneItem = getOneItem
 
+// Get the list of the categories from the database
+async function getCategoryList(callback) {
+  const client = new MongoClient(config.mongoURL);
+  await client.connect();
+  const db = client.db(config.mongoDatabase);
+  await db.collection('healthdata').aggregate([{$group: {_id : "$category"}}]).toArray().then(result => {
+    console.log(result);
+    client.close();
+    callback(result);
+   });
+}
+
+exports.getCategoryList = getCategoryList
