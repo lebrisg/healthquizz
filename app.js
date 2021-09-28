@@ -78,8 +78,9 @@ app.get("/item", async (req, res) => {
         color:    item.color
        });
      });
-    res.render("displayAll");
    });
+ res.render("displayAll");
+ items=[];
 });
 
 // Expose our metrics at the default URL for Prometheus
