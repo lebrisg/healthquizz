@@ -64,6 +64,7 @@ app.get("/", async (req, res) => {
      });
    });
   res.render("displayCategories");
+  items=[];
  });
 
 // Display all the items
