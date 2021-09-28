@@ -51,7 +51,7 @@ if(!config.mongoURL) {
 db.init();
 
 var items = [];
-app.locals.lines = items;
+app.locals.items = items;
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
