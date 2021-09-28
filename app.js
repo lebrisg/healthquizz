@@ -62,9 +62,9 @@ app.get("/", async (req, res) => {
         category: item._id
        });
      });
-    res.render("displayCategories");
    });
-});
+  res.render("displayCategories");
+ });
 
 // Display all the items
 app.get("/item", async (req, res) => {
