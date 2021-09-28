@@ -59,7 +59,7 @@ app.get("/", async (req, res) => {
     docs.forEach(function(item) {
       console.log(item);
       items.push({
-        category: item.category
+        category: item._id
        });
      });
     res.render("displayCategories");
