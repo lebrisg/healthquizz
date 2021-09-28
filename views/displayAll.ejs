@@ -7,14 +7,14 @@
 </head>
 <body>
   <h1>Liste:</h1>
-  <% if (lines.length) { %>
-    <% lines.forEach(function(line) { %>
+  <% if (items.length) { %>
+    <% items.forEach(function(item) { %>
       <div>
-        <%= line.category %>: <%= line.name %>
-        <% if (line.protein == "oui") { %>
+        <%= item.category %>: <%= item.name %>
+        <% if (item.protein == "oui") { %>
            (P)
         <% } %> 
-        / <%= line.color %>
+        / <%= item.color %>
       </div>
     <% }) %>
   <% } else { %>

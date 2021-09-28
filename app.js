@@ -50,18 +50,18 @@ if(!config.mongoURL) {
 // Initialize the database
 db.init();
 
-var lines = [];
-app.locals.lines = lines;
+var items = [];
+app.locals.lines = items;
 
 // Deal with HTTP requests
 app.get("/", async (req, res) => {
   await db.getOneItem(function(docs) {
-    docs.forEach(function(line) {
-      lines.push({
-        category: line.category,
-        name:     line.name,
-        protein:  line.protein,
-        color:    line.color
+    docs.forEach(function(item) {
+      items.push({
+        category: item.category,
+        name:     item.name,
+        protein:  item.protein,
+        color:    item.color
        });
      });
     res.render("displayAll");
