@@ -71,7 +71,7 @@ async function getCategoryList(callback) {
   await client.connect();
   const db = client.db(config.mongoDatabase);
   await db.collection('healthdata').aggregate([{$group: {_id : "$category"}}]).toArray().then(result => {
-    console.log(result);
+    //console.log(result);
     client.close();
     callback(result);
    });
