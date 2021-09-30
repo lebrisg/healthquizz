@@ -78,3 +78,17 @@ async function getCategoryList(callback) {
 }
 
 exports.getCategoryList = getCategoryList
+
+// Get the list of colored items from the database
+async function getColoredItems(color, callback) {
+  const client = new MongoClient(config.mongoURL);
+  await client.connect();
+  const db = client.db(config.mongoDatabase);
+  await db.collection('healthdata').find({"color": color}).toArray().then(result => {
+    //console.log(result);
+    client.close();
+    callback(result);
+   });
+}
+
+exports.getColoredItems = getColoredItems

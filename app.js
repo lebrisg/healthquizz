@@ -83,6 +83,22 @@ app.get("/item", async (req, res) => {
    });
 });
 
+// Display all the orange items
+app.get("/orange", async (req, res) => {
+  await db.getColoredItems("orange", function(docs) {
+    docs.forEach(function(item) {
+      items.push({
+        category: item.category,
+        name:     item.name,
+        protein:  item.protein,
+        color:    item.color
+       });
+     });
+    res.render("displayAll");
+    docs.forEach(function(item) { items.pop(); });
+   });
+});
+
 // Expose our metrics at the default URL for Prometheus
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', promClient.register.contentType);
