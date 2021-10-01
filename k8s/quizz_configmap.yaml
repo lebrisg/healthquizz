@@ -253,7 +253,6 @@ data:
     { "category": "Fruits frais", "name": "Figue", "protein": "non", "color": "rouge" },
     { "category": "Fruits frais", "name": "Pomme cuite", "protein": "non", "color": "rouge" },
     { "category": "Fruits secs", "name": "Abricot sec", "protein": "non", "color": "rouge" },
-    { "category": "Fruits secs", "name": "Cacahuète", "protein": "non", "color": "rouge" },
     { "category": "Fruits secs", "name": "Datte", "protein": "non", "color": "rouge" },
     { "category": "Fruits secs", "name": "Figue sèche", "protein": "non", "color": "rouge" },
     { "category": "Fruits secs", "name": "Pâte d'amande", "protein": "non", "color": "rouge" },
