@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Quizz</title>
+</head>
+<body>
+  <h1>Quizz:</h1>
+  Quelle est la couleur ?
+  <% if (items.length) { %>
+    <% items.forEach(function(item) { %>
+      <div>
+        <%= item.category %>: <%= item.name %>
+        <% if (item.protein == "oui") { %>
+           (P)
+        <% } %> 
+      </div>
+    <% }) %>
+  <% } else { %>
+  Rien !
+  <% } %>
+</body>
+</html>

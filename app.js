@@ -78,7 +78,7 @@ app.get("/item", async (req, res) => {
         color:    item.color
        });
      });
-    res.render("displayAll");
+    res.render("displayQuizz");
     docs.forEach(function(item) { items.pop(); });
    });
 });
