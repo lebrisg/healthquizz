@@ -399,39 +399,39 @@ data:
     { "category": "Plats cuisinés", "name": "Sandwich jambon beurre", "protein": "non", "color": "rouge" },
     { "category": "Plats cuisinés", "name": "Soufflé au fromage", "protein": "non", "color": "rouge" },
     { "category": "Plats cuisinés", "name": "Soupe au potimarron", "protein": "non", "color": "rouge" },
-    { "category": "Fruits secs", "name": "Cacahuète", "protein": "non", "color": "violette" }
-    { "category": "Fruits secs", "name": "Amande fumée et salée", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Baguette blanche industrielle", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Biscotte blanche", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Biscuit salé et fumé chimiquement", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Céréales sucrées, raffinées, industrielles de petit déjeuner", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Corn-flakes sucrés", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Crackers blancs", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Pâte à cuisson rapide", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Petit pain suédois", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Riz blanc précuit", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Riz soufflé", "protein": "non", "color": "violette" }
-    { "category": "Céréales", "name": "Viennoiserie industrielle", "protein": "non", "color": "violette" }
-    { "category": "Légumineuses et féculents", "name": "Chips", "protein": "non", "color": "violette" }
-    { "category": "Légumineuses et féculents", "name": "Chips aromatisées", "protein": "non", "color": "violette" }
-    { "category": "Légumineuses et féculents", "name": "Chips fumées", "protein": "non", "color": "violette" }
-    { "category": "Viandes et oeufs", "name": "Charcuterie industrielle", "protein": "oui", "color": "violette" }
-    { "category": "Viandes et oeufs", "name": "Saucisse de Francfort industrielle", "protein": "oui", "color": "violette" }
-    { "category": "Viandes et oeufs", "name": "Saucisse de Strasbourg industrielle", "protein": "oui", "color": "violette" }
-    { "category": "Matières grasses", "name": "Beurre de cacahuète", "protein": "non", "color": "violette" }
-    { "category": "Aromates et condiments", "name": "Tablette de bouillon chimique", "protein": "non", "color": "violette" }
-    { "category": "Aromates et condiments", "name": "Ketchup", "protein": "non", "color": "violette" }
-    { "category": "Aromates et condiments", "name": "Sauce soja (avec conservateurs et additifs)", "protein": "non", "color": "violette" }
-    { "category": "Aromates et condiments", "name": "Sauce industrielle avec conservateurs, colorants, sucre et glutamate", "protein": "non", "color": "violette" }
-    { "category": "Desserts", "name": "Bonbon industriel chimique", "protein": "non", "color": "violette" }
-    { "category": "Desserts", "name": "Gâteau industriel", "protein": "non", "color": "violette" }
-    { "category": "Desserts", "name": "Sucre blanc", "protein": "non", "color": "violette" }
-    { "category": "Boissons", "name": "Alcool de fruit", "protein": "non", "color": "violette" }
-    { "category": "Boissons", "name": "Apéritif", "protein": "non", "color": "violette" }
-    { "category": "Boissons", "name": "Bière", "protein": "non", "color": "violette" }
-    { "category": "Boissons", "name": "Liqueur", "protein": "non", "color": "violette" }
-    { "category": "Boissons", "name": "Sirop de fruits", "protein": "non", "color": "violette" }
-    { "category": "Boissons", "name": "Soda et cola", "protein": "non", "color": "violette" }
-    { "category": "Boissons", "name": "Vin cuit", "protein": "non", "color": "violette" }
+    { "category": "Fruits secs", "name": "Cacahuète", "protein": "non", "color": "violette" },
+    { "category": "Fruits secs", "name": "Amande fumée et salée", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Baguette blanche industrielle", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Biscotte blanche", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Biscuit salé et fumé chimiquement", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Céréales sucrées, raffinées, industrielles de petit déjeuner", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Corn-flakes sucrés", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Crackers blancs", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Pâte à cuisson rapide", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Petit pain suédois", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Riz blanc précuit", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Riz soufflé", "protein": "non", "color": "violette" },
+    { "category": "Céréales", "name": "Viennoiserie industrielle", "protein": "non", "color": "violette" },
+    { "category": "Légumineuses et féculents", "name": "Chips", "protein": "non", "color": "violette" },
+    { "category": "Légumineuses et féculents", "name": "Chips aromatisées", "protein": "non", "color": "violette" },
+    { "category": "Légumineuses et féculents", "name": "Chips fumées", "protein": "non", "color": "violette" },
+    { "category": "Viandes et oeufs", "name": "Charcuterie industrielle", "protein": "oui", "color": "violette" },
+    { "category": "Viandes et oeufs", "name": "Saucisse de Francfort industrielle", "protein": "oui", "color": "violette" },
+    { "category": "Viandes et oeufs", "name": "Saucisse de Strasbourg industrielle", "protein": "oui", "color": "violette" },
+    { "category": "Matières grasses", "name": "Beurre de cacahuète", "protein": "non", "color": "violette" },
+    { "category": "Aromates et condiments", "name": "Tablette de bouillon chimique", "protein": "non", "color": "violette" },
+    { "category": "Aromates et condiments", "name": "Ketchup", "protein": "non", "color": "violette" },
+    { "category": "Aromates et condiments", "name": "Sauce soja (avec conservateurs et additifs)", "protein": "non", "color": "violette" },
+    { "category": "Aromates et condiments", "name": "Sauce industrielle avec conservateurs, colorants, sucre et glutamate", "protein": "non", "color": "violette" },
+    { "category": "Desserts", "name": "Bonbon industriel chimique", "protein": "non", "color": "violette" },
+    { "category": "Desserts", "name": "Gâteau industriel", "protein": "non", "color": "violette" },
+    { "category": "Desserts", "name": "Sucre blanc", "protein": "non", "color": "violette" },
+    { "category": "Boissons", "name": "Alcool de fruit", "protein": "non", "color": "violette" },
+    { "category": "Boissons", "name": "Apéritif", "protein": "non", "color": "violette" },
+    { "category": "Boissons", "name": "Bière", "protein": "non", "color": "violette" },
+    { "category": "Boissons", "name": "Liqueur", "protein": "non", "color": "violette" },
+    { "category": "Boissons", "name": "Sirop de fruits", "protein": "non", "color": "violette" },
+    { "category": "Boissons", "name": "Soda et cola", "protein": "non", "color": "violette" },
+    { "category": "Boissons", "name": "Vin cuit", "protein": "non", "color": "violette" },
     { "category": "Plats cuisinés", "name": "Petit four sucré", "protein": "non", "color": "violette" }
     ]
