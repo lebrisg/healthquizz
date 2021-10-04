@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Liste</title>
-</head>
-<body>
+<%- include('header'); -%>
   <h1>Liste:</h1>
   <% if (items.length) { %>
     <% items.forEach(function(item) { %>
@@ -20,5 +13,4 @@
   <% } else { %>
   Rien !
   <% } %>
-</body>
-</html>
+<%- include('footer'); -%>
