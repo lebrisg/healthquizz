@@ -57,7 +57,7 @@ app.locals.items = items;
 app.get("/", async (req, res) => {
   await db.getCategoryList(function(docs) {
     docs.forEach(function(item) {
-      console.log(item);
+      //console.log(item);
       items.push({
         category: item._id
        });
