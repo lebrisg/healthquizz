@@ -1,4 +1,4 @@
-<% include header %>
+<%- include ('header'); -%>
   <h1>Liste:</h1>
   <% if (items.length) { %>
     <% items.forEach(function(item) { %>
@@ -9,4 +9,4 @@
   <% } else { %>
   Rien !
   <% } %>
-<% include footer %>
+<%- include ('footer'); -%>
