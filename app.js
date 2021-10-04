@@ -1,5 +1,5 @@
 var http = require("http");
-var path = require("path");
+//var path = require("path");
 var morgan = require("morgan");
 var express = require("express");
 var ejs = require("ejs");
@@ -21,9 +21,9 @@ const collectDefaultMetrics = promClient.collectDefaultMetrics;
 collectDefaultMetrics({ prefix: 'healthquizz:' });
 
 // Define render engine used
-app.set("views", path.resolve(__dirname, "views"));
+//app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
-//app.set("views", "./views");
+app.set("views", "./views");
 
 // Define health checks
 app.get("/ready", (req, res) => res.status(200).json({ status: "ok" }));
