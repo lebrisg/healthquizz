@@ -5,6 +5,7 @@ const config = require("./config");
 // Initialize the database content
 async function init() {
   let nbDocs = 0;
+  console.log("Config.mongoURL:", config.mongoURL);
   const client = new MongoClient(config.mongoURL);
   await client.connect();
   console.log("Connected successfully to server at:", config.mongoURL);
