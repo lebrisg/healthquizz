@@ -15,7 +15,9 @@ spec:
         name: mongo
     spec:
       containers:
-      - env:
+      - name: mongo
+        image: bitnami/mongodb:latest
+        env:
         - name: MONGODB_USERNAME
           valueFrom:
             secretKeyRef:
@@ -36,16 +38,13 @@ spec:
             secretKeyRef:
               key: mongodb-database
               name: mongo
-      containers:
-      - image: bitnami/mongodb:latest
-        name: mongo
         ports:
         - name: mongo
           containerPort: 27017
         volumeMounts:
-          - name: mongo-db
-            mountPath: /bitnami/mongodb
-      volumes:
         - name: mongo-db
-          persistentVolumeClaim:
-            claimName: mongo-storage
+          mountPath: /bitnami/mongodb
+      volumes:
+      - name: mongo-db
+        persistentVolumeClaim:
+          claimName: mongo-storage
