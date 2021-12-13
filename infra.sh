@@ -1,4 +1,4 @@
 #!/bin/sh
 
-oc new-project maps7
+oc new-project healthquizz
 oc apply -f tekton
