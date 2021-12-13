@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - env:
-        - name: MONGODB_USER
+        - name: MONGODB_USERNAME
           valueFrom:
             secretKeyRef:
               key: database-user
@@ -29,7 +29,7 @@ spec:
             secretKeyRef:
               key: database-password
               name: mongodb
-        - name: MONGODB_ADMIN_PASSWORD
+        - name: MONGODB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               key: database-admin-password
