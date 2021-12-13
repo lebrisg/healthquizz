@@ -7,6 +7,7 @@ async function init() {
   let nbDocs = 0;
   console.log("Config.mongoURL:", config.mongoURL);
   const client = new MongoClient(config.mongoURL);
+  console.log("Just before connecting ...");
   await client.connect();
   console.log("Connected successfully to server at:", config.mongoURL);
   const db = client.db(config.mongoDatabase);
