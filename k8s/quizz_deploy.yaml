@@ -22,22 +22,22 @@ spec:
         - name: MONGODB_USERNAME
           valueFrom:
             secretKeyRef:
-              key: database-user
+              key: mongodb-username
               name: mongodb
         - name: MONGODB_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: database-password
+              key: mongodb-password
               name: mongodb
         - name: MONGODB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: database-admin-password
+              key: mongodb-root-password
               name: mongodb
         - name: MONGODB_DATABASE
           valueFrom:
             secretKeyRef:
-              key: database-name
+              key: mongodb-database
               name: mongodb
         name: healthquizz
         image: image-registry.openshift-image-registry.svc:5000/healthquizz/healthquizz@sha256:20466e72a1904b3862034eecfd3ddc208cfd7d27be2a9243007cbe1238295090

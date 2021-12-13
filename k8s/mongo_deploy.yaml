@@ -19,22 +19,22 @@ spec:
         - name: MONGODB_USERNAME
           valueFrom:
             secretKeyRef:
-              key: database-user
+              key: mongodb-username
               name: mongo
         - name: MONGODB_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: database-password
+              key: mongodb-password
               name: mongo
         - name: MONGODB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: database-admin-password
+              key: mongodb-root-password
               name: mongo
         - name: MONGODB_DATABASE
           valueFrom:
             secretKeyRef:
-              key: database-name
+              key: mongodb-database
               name: mongo
       containers:
       - image: bitnami/mongodb:latest
@@ -44,7 +44,7 @@ spec:
           containerPort: 27017
         volumeMounts:
           - name: mongo-db
-            mountPath: /data/db
+            mountPath: /bitnami/mongodb
       volumes:
         - name: mongo-db
           persistentVolumeClaim:
