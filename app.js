@@ -47,7 +47,9 @@ if(!config.mongoURL) {
  }
 
 // Initialize the database
-db.init();
+db.init()
+  .then(console.log)
+  .catch(console.error);
 
 var items = [];
 app.locals.items = items;
