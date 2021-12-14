@@ -1,39 +1,46 @@
-const { MongoClient } = require("mongodb");
+//const { MongoClient } = require("mongodb");
+const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
 const config = require("./config");
 
 // Initialize the database content
 async function init() {
   let nbDocs = 0;
-  console.log("Config.mongoURL:", config.mongoURL);
-  const client = new MongoClient(config.mongoURL);
-  console.log("Just before connecting ...");
-  await client.connect();
-  console.log("Connected successfully to server at:", config.mongoURL);
-  const db = client.db(config.mongoDatabase);
-  nbDocs = await db.collection('healthdata').count();
+//  console.log("Config.mongoURL:", config.mongoURL);
+  MongoClient.connect(config.mongoURL, function(err, client) {
+    console.log("Connected successfully to server at:", config.mongoURL);
+    const db = client.db(config.mongoDatabase);
+    client.close();
+  });
+  
+//  const client = new MongoClient(config.mongoURL);
+//  console.log("Just before connecting ...");
+//  await client.connect();
+//  console.log("Connected successfully to server at:", config.mongoURL);
+//  const db = client.db(config.mongoDatabase);
+//  nbDocs = await db.collection('healthdata').count();
   //console.log("NbDocs:", nbDocs);
-  client.close();
+//  client.close();
 
   // If no document in the database
-  if (nbDocs == 0) {
+//  if (nbDocs == 0) {
     // Read the file healthdata
-    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
+//    const data = fs.readFileSync('/mnt/healthdata', 'utf8');
 
     // Transform it into Json
-    const docs = JSON.parse(data.toString());
+//    const docs = JSON.parse(data.toString());
 
     // Insert it into the database
-    const client = new MongoClient(config.mongoURL);
-    await client.connect();
-    const db = client.db(config.mongoDatabase);
-    db.collection('healthdata')
-      .insertMany(docs, function(err, result) {
-        if (err) throw err;
-        console.log('Inserted docs:', result.insertedCount);
-     });
-   }
-  client.close();
+//    const client = new MongoClient(config.mongoURL);
+//    await client.connect();
+//    const db = client.db(config.mongoDatabase);
+//    db.collection('healthdata')
+//      .insertMany(docs, function(err, result) {
+//        if (err) throw err;
+//        console.log('Inserted docs:', result.insertedCount);
+//     });
+//   }
+//  client.close();
 }
 
 exports.init = init
