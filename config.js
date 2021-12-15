@@ -6,8 +6,8 @@ var mongoPort = process.env['MONGO_SERVICE_PORT'];
 var mongoDatabase = process.env['MONGODB_DATABASE'];
 var mongoPassword = process.env['MONGODB_PASSWORD'];
 var mongoUser = process.env['MONGODB_USERNAME'];
-//var mongoURL = "mongodb://" + mongoUser + ":" + mongoPassword + "@mongodb:" + mongoPort + "/" + mongoDatabase;
-var mongoURL = "mongodb://" + mongoUser + ":" + mongoPassword + "@" + mongoHost + ":" + mongoPort + "/" + mongoDatabase;
+var mongoURL = "mongodb://" + mongoUser + ":" + mongoPassword + "@mongo:" + mongoPort + "/" + mongoDatabase;
+//var mongoURL = "mongodb://" + mongoUser + ":" + mongoPassword + "@" + mongoHost + ":" + mongoPort + "/" + mongoDatabase;
 
 function display() {
   console.log("port: "+port+", ip: "+ip);
